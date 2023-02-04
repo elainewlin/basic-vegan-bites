@@ -33,13 +33,18 @@
   font-weight: 700;
 }
 
+.pear-icon {
+  width: 30px;
+  margin-right: 8px;
+}
+
 .social-section {
   float: right;
 }
 
 .social-image {
-  padding: 0 4px;
-  width: 32px;
+  padding: 0 6px;
+  width: 34px;
 }
 
 .social-image:hover {
