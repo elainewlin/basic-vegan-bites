@@ -1,4 +1,4 @@
-const rawText = `Ingredients
+const rawRecipe = `Ingredients
 80 grams coconut oil, solid but scoop-able
 180 grams light brown sugar
 1/2 Tbsp vanilla extract
@@ -22,20 +22,33 @@ Scoop the cookies onto the sheet. Leave a few inches between the cookies for spr
 baking, sprinkle the cooking with sea salt.
 Cool the cookies on the baking sheet for 15 minutes before transferring.`
 
-const [rawIngredients, rawInstructions] = rawText.split('Ingredients')[1].split('Instructions')
+const listify = (lines) => {
+  lines.split('\n').forEach(line => {
+    console.log(`  <li>${line}</li>`)
+  })
+}
 
-const ingredients = rawIngredients.split('\n')
-console.log('<b>Ingredients</b>')
-console.log('<ul>')
-ingredients.forEach(line => {
-  console.log(`  <li>${line}</li>`)
-})
-console.log('</ul>')
+const printRecipe = (recipe) => {
+  const [rawIngredients, rawInstructions] = recipe.split('Ingredients')[1].split('Instructions')
 
-const instructions = rawInstructions.split('\n')
-console.log('<b>Instructions</b>')
-console.log('<ol>')
-instructions.forEach(line => {
-  console.log(`  <li>${line}</li>`)
-})
-console.log('</ol>')
+  console.log('<b>Ingredients</b>')
+  console.log('<ul>')
+  listify(rawIngredients)
+  console.log('</ul>')
+
+  const instructions = rawInstructions.split('\n')
+  console.log('<b>Instructions</b>')
+  console.log('<ol>')
+  listify(instructions)
+  console.log('</ol>')
+}
+
+const block = `1. Boil water for the noodles. Fill a pot about halfway full, cover with a lid, and put on the stove on high heat.
+2. Turn on the oven for 350 degrees F. Line a large baking sheet with parchment paper. Pat the tofu dry, and crumble
+it onto the baking sheet. Add the oil, salt, and spices. Plop in the oven for 35 minutes.
+3. Cook the noodles until soft. Drain, and rinse in cold water.
+4. Make the peanut sauce. Stir together the peanut butter, water, and soy sauce.
+5. Cook the veggies. In a pan, heat the oil over medium heat. Plop in the veggies and soy sauce. Cook until just
+tender (~5-10 minutes).`
+
+listify(block)
